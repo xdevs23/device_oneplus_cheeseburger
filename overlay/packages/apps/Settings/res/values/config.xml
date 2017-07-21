@@ -24,4 +24,8 @@
        3 = right side
   -->
   <integer name="config_fingerprintSensorLocation">1</integer>
+
+  <!-- Flag specifying whether VoLTE is enabled -->
+  <bool name="config_voice_over_lte_enabled">true</bool>
+
 </resources>
