@@ -32,9 +32,6 @@ BOARD_VENDOR := oneplus
 # Assertions
 TARGET_OTA_ASSERT_DEVICE := OnePlus5,cheeseburger,oneplus5,op5,A5000
 
-# Use Snapdragon LLVM, if available
-TARGET_USE_SDCLANG := true
-
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := msm8998
 TARGET_NO_BOOTLOADER := true
@@ -79,6 +76,9 @@ TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 # HAX: Remove AOSP
 BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 
+# Enable real time lockscreen charging current values
+BOARD_GLOBAL_CFLAGS += -DBATTERY_REAL_INFO
+
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
 
@@ -105,6 +105,10 @@ TARGET_SPECIFIC_CAMERA_PARAMETER_LIBRARY := libcamera_parameters_ext
 # Charger
 BOARD_CHARGER_ENABLE_SUSPEND := true
 BOARD_CHARGER_DISABLE_INIT_BLANK := true
+
+# CM Hardware
+BOARD_HARDWARE_CLASS += $(PLATFORM_PATH)/cmhw
+TARGET_TAP_TO_WAKE_NODE := "/proc/touchpanel/double_tap_enable"
 
 # CNE and DPM
 BOARD_USES_QCNE := true
@@ -141,9 +145,6 @@ WITH_DEXPREOPT := false
 # FM
 BOARD_HAVE_QCOM_FM := true
 
-# Gestures
-TARGET_GESTURES_NODE := "/proc/touchpanel/gesture_enable"
-
 # GPS
 TARGET_NO_RPC := true
 USE_DEVICE_SPECIFIC_GPS := true
@@ -174,7 +175,6 @@ TARGET_POWERHAL_VARIANT := qcom
 
 # Recovery
 TARGET_RECOVERY_FSTAB := $(PLATFORM_PATH)/recovery.fstab
-TARGET_RECOVERY_UI_LIB := librecovery_ui_msm
 BOARD_HAS_LARGE_FILESYSTEM := true
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
@@ -213,5 +213,3 @@ WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # inherit from the proprietary version
 -include vendor/oneplus/cheeseburger/BoardConfigVendor.mk
-
-
