@@ -224,7 +224,11 @@ PRODUCT_PACKAGES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    power.msm8998
+    power.msm8998 \
+    powerhint.qti
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/powerhint_soc_id_292.xml:system/etc/powerhint.xml
 
 # QMI
 PRODUCT_PACKAGES += \
@@ -254,7 +258,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/init.qcom.post_boot.sh:system/etc/init.qcom.post_boot.sh \
     $(LOCAL_PATH)/rootdir/etc/init.qcom.sdio.sh:system/etc/init.qcom.sdio.sh \
     $(LOCAL_PATH)/rootdir/etc/init.qcom.uicc.sh:system/etc/init.qcom.uicc.sh \
-    $(LOCAL_PATH)/rootdir/etc/init.qcom.wifi.sh:system/etc/init.qcom.wifi.sh
+    $(LOCAL_PATH)/rootdir/etc/init.qcom.wifi.sh:system/etc/init.qcom.wifi.sh \
+    $(LOCAL_PATH)/rootdir/etc/init.adin.rc:root/init.adin.rc
 
 # RIL
 PRODUCT_PACKAGES += \
